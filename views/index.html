@@ -1,32 +1,75 @@
 <!DOCTYPE html>
 
 <html>
-   <head>
-      <title>Timestamp Microservice | freeCodeCamp.org</title>
-      <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-      <link href="style.css" rel="stylesheet" type="text/css">
-   </head>
 
-   <body>
-    <h1>Timestamp Microservice</h1>
-    <hr />
-    <div class="container">
-      <h3>Example Usage:</h3>
-      <ul>
-        <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
-        <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
-      </ul>
+<head>
+  <title>Timestamp Microservice | freeCodeCamp.org</title>
+  <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png"
+    type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-      <h3>Example Output:</h3>
-      <p>
-        <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-      </p>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <h1>Timestamp Microservice</h1>
+  <hr />
+  <p>
+    <b>What's the unix time stamp ?</b><br />
+    The unix time stamp is a way to track time as a running total of seconds. This count starts at the Unix Epoch on
+    January 1st, 1970 at UTC. Therefore, the unix time stamp is merely the number of seconds between a particular date
+    and the Unix Epoch. This is very useful to computer systems for tracking and sorting dated information in dynamic
+    and distributed applications both online and
+    client side.
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h3>Notes:</h3>
+        <ul>
+          <li>The standard string representation of a date time string is a simplification of the ISO 8601 calendar date
+            extended format. (See the section <a href='https://tc39.es/ecma262/#sec-date-time-string-format'>Date Time
+              String Format</a> in the ECMAScript specification for more details.)
+          </li>
+          <li>A request to <mark>/api/:date?</mark> with a valid date should return a JSON object with a
+            <mark>unix</mark> key that is a Unix
+            timestamp of the input date in milliseconds and a <mark>utc</mark> key that is a string of the input date in
+            the format:
+            <mark>Thu, 01 Jan 1970 00:00:00 GMT</mark>
+          </li>
+          <li>If the input date string is invalid, the api returns an object having the structure <mark>{ error :
+              "Invalid
+              Date" }</mark></li>
+          <li>An empty date parameter should return the current time in a JSON object with a unix and utc keys</li>
+          <li>The API can handle dates <mark>e.g('05 October 2011')</mark> that can be successfully parsed by <mark>new
+              Date(date_string)</mark>.
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <h3>Example Usage:</h3>
+        <ul>
+          <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
+          <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
+          <li><a href="api/05 October 2011">[project url]/api/05 October 2011</a></li>
+        </ul>
+
+        <h3>Example Output:</h3>
+        <p>
+          <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
+        </p>
+      </div>
     </div>
-    <div class="footer">
-      <p>
-        By <a href="https://github.com/Sabri0o">Sabri Trabelsi</a>
-      </p>
-    </div>
-  </body>
+  </div>
+  <hr />
+  <div class="footer">
+    <p>
+      By <a href="https://github.com/Sabri0o">Sabri Trabelsi</a>
+    </p>
+  </div>
+</body>
+
 </html>
