@@ -24,7 +24,27 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-
+// ECMAScript defines a string interchange format for date-times based upon a simplification of the ISO 8601 calendar date extended format. 
+// The format is as follows: YYYY-MM-DDTHH:mm:ss
+app.get("/api/:date?", function(req, res) {
+  if (!req.params.date) {
+    res.json({ unix: Date.now(), utc: new Date(Date.now()).toUTCString() });
+  }
+  else if (req.params.date.includes('-')) {
+    if (new Date(req.params.date).toString() === "Invalid Date") {
+      res.json({ error: "Invalid Date" });
+    } else {
+      res.json({ unix: new Date(req.params.date).getTime(), utc: new Date(req.params.date).toUTCString() });
+    }
+  }
+  else {
+    if (new Date(req.params.date).toString() !== "Invalid Date") {
+      res.json({ unix: new Date(req.params.date).getTime(), utc: new Date(req.params.date).toUTCString() });
+    } else {
+      res.json({ unix: Number(req.params.date), utc: new Date(Number(req.params.date)).toUTCString() });
+    }
+  }
+});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
